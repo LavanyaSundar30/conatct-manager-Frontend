@@ -1,0 +1,13 @@
+<div class="container">
+  <input type="text" class="form-control" id="name"
+  required
+  [(ngModel)]="data.name" />
+
+<input type="file" name="photo" ng2FileSelect [uploader]="uploader" />
+<button type="button" class="btn btn-success btn-s" (click)="submit()">
+  Upload an Image
+</button>
+
+</div>
+
+<p>Hello {{ data.name }}!</p>

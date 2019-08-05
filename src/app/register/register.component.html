@@ -1,0 +1,22 @@
+
+<mat-card class="example-card">
+  <mat-card-header>
+    <mat-card-title>Register Form</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+  <form class="example-form">
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="UserName" class="form-control" id="username"  name="username"  [formControl]="username">
+      <mat-error *ngIf="username.invalid">Username is required</mat-error>
+    </mat-form-field>
+<br>
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="Password" class="form-control" id="password"  name="password"  [formControl]="password">
+      <mat-error *ngIf="password.invalid">Password is required</mat-error>
+    </mat-form-field>
+    <mat-card-actions>
+      <button type="button" mat-raised-button color="primary" (click) = "register()">Submit</button>
+    </mat-card-actions>
+  </form>
+</mat-card-content>
+</mat-card>

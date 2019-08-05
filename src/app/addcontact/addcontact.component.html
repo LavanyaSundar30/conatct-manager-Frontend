@@ -1,0 +1,44 @@
+
+<div class="login-container">
+  <mat-card style="color: rgba(0,0,0,.54);
+  background: rgba(0,0,0,.03)">
+   <span *ngIf="!isUpdate">Add Contact Details</span>
+   <span *ngIf="isUpdate">Update Details</span>
+  </mat-card>
+
+  <mat-card>
+      <form class="example-form">
+          <mat-form-field class="example-full-width">
+            <input matInput [formControl]="name" placeholder="Enter Name">
+            <mat-error *ngIf="name.invalid">{{getErrorMessage("name")}}</mat-error>
+          </mat-form-field>
+          <br>
+          <mat-form-field class="example-full-width">
+              <input matInput [formControl]="email" placeholder="Enter EmailID">
+              <mat-error *ngIf="email.invalid">{{getErrorMessage("email")}}</mat-error>
+            </mat-form-field>
+            <br>
+            <mat-form-field class="example-full-width">
+                <input matInput [formControl]="phone" placeholder="Enter ContactNumber">
+                <mat-error *ngIf="phone.invalid">{{getErrorMessage("phone")}}</mat-error>
+              </mat-form-field>
+              <br>
+              <mat-form-field class="example-full-width">
+                  <input matInput [formControl]="city" placeholder="Enter City">
+                  <mat-error *ngIf="city.invalid">{{getErrorMessage("city")}}</mat-error>
+                </mat-form-field>
+                <br>
+                <div>
+
+                  <input type="file" name="photo" ng2FileSelect [uploader]="uploader" /></div>
+
+                <button mat-raised-button color="primary" (click) ="submit()" [disabled]="!uploader.getNotUploadedItems().length">Upload an Image</button>
+      <br>
+      <br>
+      <button  mat-raised-button  (click)="addcontact()" color="primary">ADD</button>
+      <span> {{message}}</span>
+      <span> {{fileLocations}}</span>
+      <button  mat-raised-button color="accent" mat-dialog-close>Cancel</button>
+    </form>
+  </mat-card>
+</div>

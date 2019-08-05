@@ -1,0 +1,48 @@
+
+<button style = "margin-right: 30px" class= "abutton" mat-raised-button  (click)="onCreate()" >
+    <mat-icon>add</mat-icon>Create
+  </button>
+  <!-- <button style = "margin-right: 30px" mat-raised-button color="primary" (click)="importCSV.click()"> Import CSV </button>
+  <input #importCSV name="file" ng2FileSelect [uploader]="uploader" type="file" (change)="importCSVFile()" hidden> -->
+
+  <button style = "margin-right: 30px" mat-raised-button color="primary" (click)="exportCSV()"> Export CSV</button>
+<button  style = "margin-right: 30px" mat-raised-button color="primary" (click)="exportPDF()">Export PDF</button>
+<table class="table table-striped w-auto">
+
+    <!--Table head-->
+    <thead>
+        <tr>
+
+            <th>Name</th>
+            <th>EmailID</th>
+            <th>City</th>
+            <th>Phone</th>
+            <th>Photo</th>
+            <th>Action</th>
+
+        </tr>
+    </thead>
+    <!--Table head-->
+
+    <!--Table body-->
+    <tbody>
+        <tr *ngFor="let user of users?.response">
+            <td>{{user?.name}}</td>
+            <td>{{user?.email}}</td>
+            <td>{{user?.city}}</td>
+            <td>{{user?.phone}}</td>
+            <td>{{user?.fileLocation}}</td>
+            <td>
+                <button (click)="openEditDilaog(user)" class="button button1">Edit</button>
+                <button  class="button button2"  (click) = "deleteContact(user._id)">Delete</button>
+            </td>
+
+          </tr>
+
+    </tbody>
+    <!--Table body-->
+
+
+</table>
+<!--Table-->
+

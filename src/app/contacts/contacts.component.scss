@@ -36,7 +36,7 @@
   margin-top: 5%;
 }
 table, td  {
-  border: 0px solid rgb(0, 0, 0);
+  border: 2px solid rgb(0, 0, 0);
   border-collapse: collapse;
   padding: 10px;
   margin-bottom: 2%;
@@ -44,8 +44,8 @@ table, td  {
 }
 th {
   border: 2px solid rgb(0, 0, 0);
-  background-color: #000000;
-color: white;
+  background-color: #ffffff;
+color: rgb(0, 0, 0);
   // border-collapse: collapse;
   padding: 10px;
 }
@@ -54,6 +54,11 @@ table tr:nth-child(odd) {
   width: 10px;
 }
 table tr:nth-child(even) {
-  background-color: #92e4f338;
+  background-color: #ffffff;
   width: 10px;
+}
+@media print
+{
+.noprint {display:none;}
+#header {visibility: visible;}
 }

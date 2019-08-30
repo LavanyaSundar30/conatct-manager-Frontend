@@ -5,9 +5,9 @@
 	width: 90%;
 	text-align: left;
 	font: normal 16px sans-serif;
-  position: static;
+  position: relative;
 
-  bottom: 20%;
+  bottom: inherit; //|length|initial|inherit;
   width: 100%;
 	padding: 45px 40px;
   margin-top: 70px;
@@ -79,4 +79,8 @@
 	.footer-distributed .footer-left p.footer-links{
 		line-height: 1.8;
 	}
+}
+@media print
+{
+.noprint {display:none;}
 }

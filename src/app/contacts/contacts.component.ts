@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { AuthService } from '../auth.service';
 import { RequestService } from '../request.service';
 import { Router } from '@angular/router';
@@ -6,10 +6,9 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import { UpdateComponent } from '../update/update.component';
 import { AddcontactComponent } from '../addcontact/addcontact.component';
 import * as moment from 'moment';
-import { MatSnackBar } from '@angular/material';
 import { Angular5Csv } from 'angular5-csv/dist/Angular5-csv';
-// declare let jsPDF;
-
+// import * as jsPDF from 'jspdf';
+declare let jsPDF: any ;
 interface Contact {
   _id: string;
   name: string;
@@ -89,7 +88,7 @@ export class ContactsComponent implements OnInit {
       });
     }
     exportCSV() {
-      console.log(this.contacts);
+      // console.log(this.contacts);
 
       const  options = {
           fieldSeparator: ',',
@@ -120,40 +119,45 @@ export class ContactsComponent implements OnInit {
       console.log(this.contacts);
       const exportResult = new Angular5Csv(exportData, 'Contacts' + moment().unix() + '.xls' , options);
     }
-  // exportPDF() {
-  //   const columns = [
-  //     {title: 'Favorite', dataKey: 'favorite'},
-  //     {title: 'Name', dataKey: 'name'},
-  //     {title: 'EmailID', dataKey: 'email'},
-  //     {title: 'Phone.No.', dataKey: 'phone'},
-  //     {title: 'City', dataKey: 'city'}
-  //   ];
-  //   const exportData: any = this.contacts.map(a => ({...a}));
+    exportPDF() {
+const columns = [
+  {title: 'Name', dataKey: 'name'},
+  {title: 'EmailId', dataKey: 'email'},
+  {title: 'Phone', dataKey: 'phone'},
+  {title: 'City', dataKey: 'city'},
+  {title: 'Favorite', dataKey: 'favorite'}
+];
+const exportData: any = this.contacts.map(a => ({...a}));
 
-  //   exportData.map((value: any, key) => {
-  //     delete exportData[key]._id;
-  //     delete exportData[key].userId;
-  //     delete exportData[key].__v;
-  //   });
+exportData.map((value: any, key) => {
+  delete exportData[key]._id;
+  delete exportData[key].userId;
+  delete exportData[key].__v;
+});
 
-  //   const doc = new jsPDF('p', 'pt');
-  //   doc.autoTable(columns, exportData, {
-  //     cellPadding: 10, // a number, array or object (see margin below)
-  //       fontSize: 7,
-  //       font: 'helvetica', // helvetica, times, courier
-  //       lineColor: 200,
-  //       lineWidth: 0,
-  //       fontStyle: 'normal', // normal, bold, italic, bolditalic
-  //       overflow: 'ellipsize', // visible, hidden, ellipsize or linebreak
-  //       fillColor: false, // false for transparent or a color as described below
-  //       textColor: 20,
-  //       halign: 'left', // left, center, right
-  //       valign: 'middle', // top, middle, bottom
-  //       columnWidth: 0 // 'auto', 'wrap' or a number
-  //   });
+const doc = new jsPDF('p', 'pt');
+doc.autoTable(columns, exportData, {
+  cellPadding: 10, // a number, array or object (see margin below)
+    theme: 'grid',
+    // fontSize: 9,
+    font: 'helvetica', // helvetica, times, courier
+    lineColor: 200,
+    lineWidth: 0,
+    fontStyle: 'normal', // normal, bold, italic, bolditalic
+    // overflow: 'linebreak', // visible, hidden, ellipsize or linebreak
+    fillColor: false, // false for transparent or a color as described below
+    textColor: 20,
+    halign: 'left', // left, center, right
+    valign: 'middle', // top, middle, bottom
+    columnWidth: 0 // 'auto', 'wrap' or a number
+});
 
-  //   doc.save('Contacts' + moment().unix() + '.pdf');
-  // }
-
+doc.save('Contacts' + moment().unix() + '.pdf');
+}
+printTable() {
+  // console.log('printing......');
+  window.print();
+}
 
   }
+

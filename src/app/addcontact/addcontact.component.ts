@@ -41,7 +41,7 @@ export class AddcontactComponent implements OnInit {
     this.name = new FormControl('', Validators.required);
     this.email = new FormControl('', Validators.email);
     this.phone = new FormControl('', Validators.maxLength(10));
-    this.city = new FormControl('', [Validators.minLength(4), Validators.maxLength(6)]);
+    this.city = new FormControl('', Validators.required);
 
   }
 

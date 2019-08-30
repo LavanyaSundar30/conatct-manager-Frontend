@@ -1,4 +1,4 @@
-
+<div class="noprint">
 <button style = "margin-right: 30px" class= "abutton" mat-raised-button  (click)="onCreate()" >
     <mat-icon>add</mat-icon>Create
   </button>
@@ -7,6 +7,8 @@
 
   <button style = "margin-right: 30px" mat-raised-button color="primary" (click)="exportCSV()"> Export CSV</button>
 <button  style = "margin-right: 30px" mat-raised-button color="primary" (click)="exportPDF()">Export PDF</button>
+<button style = "margin-right: 30px" mat-raised-button color="accent" (click)="printTable()">Print</button>
+  </div>
 <table class="table table-striped w-auto">
 
     <!--Table head-->
@@ -18,8 +20,7 @@
             <th>City</th>
             <th>Phone</th>
             <th>Photo</th>
-            <th>Action</th>
-
+            <th class="noprint"> Action</th>
         </tr>
     </thead>
     <!--Table head-->
@@ -32,11 +33,14 @@
             <td>{{user?.city}}</td>
             <td>{{user?.phone}}</td>
             <td>{{user?.fileLocation}}</td>
+            <div class="noprint">
             <td>
+
                 <button (click)="openEditDilaog(user)" class="button button1">Edit</button>
                 <button  class="button button2"  (click) = "deleteContact(user._id)">Delete</button>
-            </td>
 
+              </td>
+            </div>
           </tr>
 
     </tbody>
@@ -45,4 +49,3 @@
 
 </table>
 <!--Table-->
-

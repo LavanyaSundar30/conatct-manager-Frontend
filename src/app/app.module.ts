@@ -30,6 +30,8 @@ import { FileSelectDirective } from 'ng2-file-upload';
 import { UploadimgComponent } from './uploadimg/uploadimg.component';
 import { UploadComponent } from './upload/upload.component';
 import * as moment from 'moment';
+import 'hammerjs';
+import { PrintComponent } from './print/print.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,7 +46,8 @@ import * as moment from 'moment';
     FrontpageComponent,
     FileSelectDirective,
     UploadimgComponent,
-    UploadComponent
+    UploadComponent,
+    PrintComponent
   ],
   imports: [
     BrowserModule,
